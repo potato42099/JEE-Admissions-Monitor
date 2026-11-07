@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JEE Forms Tracker</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen flex flex-col selection:bg-slate-900 selection:text-white">
+
+  <!-- Minimalist Top Bar -->
+  <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5 flex-wrap">
+        <h1 class="text-sm font-semibold tracking-tight text-white">Indian Engineering Admissions Monitor</h1>
+        <span class="px-1.5 py-0.5 rounded-sm text-[11px] font-mono text-slate-300 bg-slate-800 border border-slate-700">2027–28</span>
+        <span class="text-[11px] text-slate-400 hidden sm:inline">• Made by Sannidhya</span>
+      </div>
+
+      <div class="flex items-center gap-1.5 flex-wrap">
+        <span id="live-ist-clock" class="font-mono text-[11px] text-slate-400 px-2 py-1">--</span>
+        <button
+          id="btn-sync-sheet"
+          type="button"
+          class="inline-flex items-center gap-1 px-2.5 py-1 rounded-sm text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition"
+        >
+          <svg id="sync-icon" class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <span id="sync-btn-label">Sync Live DB</span>
+        </button>
+        <a
+          href="https://docs.google.com/spreadsheets/d/1khafXco2_PCS7ZGj4g4v2QrBYCT6ZHqCdCPktnt2YCs/edit"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1 px-2.5 py-1 rounded-sm text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition"
+        >
+          <span>Google Sheet DB ↗</span>
+        </a>
+        <button
+          id="btn-open-reminders"
+          type="button"
+          class="inline-flex items-center gap-1 px-2.5 py-1 rounded-sm text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition"
+        >
+          <span>Reminders &amp; Schedule</span>
+        </button>
+        <button
+          id="btn-theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+          class="inline-flex items-center px-2 py-1 rounded-sm text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition"
+        >
+          <span id="theme-toggle-icon">🌙</span>
+          <span id="theme-toggle-label" class="sr-only">Dark</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 py-4 flex-1 space-y-3.5">
+
+    <!-- Compact 5-Column Metric Strip -->
+    <section aria-label="Status Overview" class="bg-white border border-slate-200 rounded grid grid-cols-2 lg:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 overflow-hidden">
+      <button
+        type="button"
+        data-kpi-status="OPEN"
+        class="kpi-card text-left py-2.5 px-3.5 hover:bg-slate-50/70 transition focus:outline-none"
+      >
+        <div class="text-[11px] font-medium text-slate-500">Forms Open Now</div>
+        <div class="mt-0.5 flex items-baseline gap-2">
+          <span id="kpi-open-count" class="text-xl font-semibold text-emerald-700">0</span>
+          <span id="kpi-open-sub" class="text-[11px] text-slate-500">3 Fixed Deadlines</span>
+        </div>
+        <p id="kpi-open-list" class="hidden"></p>
+      </button>
+
+      <button
+        type="button"
+        data-kpi-status="IMMINENT"
+        class="kpi-card text-left py-2.5 px-3.5 hover:bg-slate-50/70 transition focus:outline-none"
+      >
+        <div class="text-[11px] font-medium text-slate-500">Opening Soon</div>
+        <div class="mt-0.5 flex items-baseline gap-2">
+          <span id="kpi-imminent-count" class="text-xl font-semibold text-amber-700">0</span>
+          <span class="text-[11px] text-slate-500">Nov–Dec 2026</span>
+        </div>
+        <p id="kpi-imminent-list" class="hidden"></p>
+      </button>
+
+      <button
+        type="button"
+        data-kpi-status="KARNATAKA"
+        class="kpi-card text-left py-2.5 px-3.5 hover:bg-slate-50/70 transition focus:outline-none"
+      >
+        <div class="text-[11px] font-medium text-slate-500">Karnataka &amp; BLR</div>
+        <div class="mt-0.5 flex items-baseline gap-2">
+          <span id="kpi-ka-count" class="text-xl font-semibold text-slate-900">0</span>
+          <span id="kpi-ka-open-sub" class="text-[11px] text-slate-500">0 Open</span>
+        </div>
+      </button>
+
+      <button
+        type="button"
+        data-kpi-status="ALL"
+        class="kpi-card text-left py-2.5 px-3.5 hover:bg-slate-50/70 transition focus:outline-none"
+      >
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-medium text-slate-500">Total Monitored</span>
+          <span id="kpi-sync-badge" class="text-[10px] text-slate-400 font-medium">Snapshot</span>
+        </div>
+        <div class="mt-0.5 flex items-baseline gap-2">
+          <span id="kpi-total-count" class="text-xl font-semibold text-slate-900">0</span>
+          <span id="kpi-sync-sub" class="text-[11px] text-slate-500">Portals Monitored</span>
+        </div>
+        <p id="kpi-last-verified-sub" class="hidden"></p>
+      </button>
+
+      <button
+        type="button"
+        data-kpi-status="MY_TRACKED"
+        class="kpi-card col-span-2 lg:col-span-1 text-left py-2.5 px-3.5 hover:bg-slate-50/70 transition focus:outline-none"
+      >
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-medium text-slate-500">My Progress</span>
+          <span id="kpi-applied-pill" class="text-[10px] text-slate-600 font-medium">0 Applied</span>
+        </div>
+        <div class="mt-0.5 flex items-baseline gap-2">
+          <span id="kpi-tracked-count" class="text-xl font-semibold text-slate-900">0</span>
+          <span id="kpi-progress-label" class="text-[11px] text-slate-500">Tracked</span>
+        </div>
+        <div class="w-full bg-slate-100 h-1 rounded-sm overflow-hidden mt-1">
+          <div id="kpi-progress-bar" class="bg-slate-900 h-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </button>
+    </section>
+
+    <!-- Sleek Single-Line Active Bulletin -->
+    <section id="active-registration-banner" class="bg-white border border-slate-200 border-l-2 border-l-emerald-600 rounded py-2 px-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+      <div class="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+        <span class="text-[10px] font-semibold uppercase tracking-wider text-emerald-700">Active</span>
+        <h2 id="banner-title" class="font-semibold text-slate-900">JEE Main 2027 (Session 1) — NTA Application Window Open</h2>
+        <span class="text-slate-300 hidden sm:inline">•</span>
+        <p id="banner-text" class="text-slate-600">
+          NTA registration for Session 1 is open through <strong>November 22, 2026 (11:50 PM IST)</strong>. Exams are scheduled for January 20–28, 2027.
+        </p>
+      </div>
+      <a
+        id="banner-link"
+        href="https://jeemain.nta.nic.in/online-application-form-for-jee-main-2027-session-1/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-sm text-[11px] font-medium bg-slate-900 hover:bg-slate-800 text-white transition"
+      >
+        <span id="banner-btn-text">Apply via NTA Portal</span>
+        <span>↗</span>
+      </a>
+    </section>
+
+    <!-- Consolidated Navigation & Filter Bar -->
+    <section class="bg-white border border-slate-200 rounded p-3 space-y-2.5">
+      <!-- Row 1: Primary Tabs & View/Utility Actions -->
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-100">
+        <div class="flex flex-wrap items-center gap-1" role="tablist" aria-label="Application Status Filter">
+          <button
+            type="button"
+            role="tab"
+            aria-selected="true"
+            data-status-tab="OPEN"
+            id="tab-btn-open"
+            class="status-tab px-2.5 py-1 rounded-sm text-xs font-semibold bg-slate-900 text-white transition"
+          >
+            Open Now
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-status-tab="IMMINENT"
+            id="tab-btn-imminent"
+            class="status-tab px-2.5 py-1 rounded-sm text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
+          >
+            Opening Soon
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-status-tab="UPCOMING"
+            id="tab-btn-upcoming"
+            class="status-tab px-2.5 py-1 rounded-sm text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
+          >
+            Upcoming 2027
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-status-tab="CLOSED"
+            id="tab-btn-closed"
+            class="status-tab px-2.5 py-1 rounded-sm text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
+          >
+            Closed
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-status-tab="ALL"
+            id="tab-btn-all"
+            class="status-tab px-2.5 py-1 rounded-sm text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
+          >
+            All Sources
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-status-tab="MY_TRACKED"
+            id="tab-btn-tracked"
+            class="status-tab px-2.5 py-1 rounded-sm text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
+          >
+            My Shortlist
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-status-tab="ALLIED"
+            id="tab-btn-allied"
+            class="status-tab px-2.5 py-1 rounded-sm text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
+          >
+            Allied UG Exams (12)
+          </button>
+        </div>
+
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <div class="inline-flex rounded-sm border border-slate-200 p-0.5 bg-slate-50">
+            <button
+              id="btn-view-cards"
+              type="button"
+              class="px-2 py-0.5 rounded-sm text-xs font-medium bg-white text-slate-900 shadow-xs transition"
+            >
+              Cards
+            </button>
+            <button
+              id="btn-view-table"
+              type="button"
+              class="px-2 py-0.5 rounded-sm text-xs font-medium text-slate-600 hover:text-slate-900 transition"
+            >
+              Compact Table
+            </button>
+          </div>
+          <button
+            id="btn-export-csv"
+            type="button"
+            class="px-2 py-1 rounded-sm text-xs font-medium border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 transition"
+          >
+            Export CSV
+          </button>
+        </div>
+      </div>
+
+      <!-- Contextual Allied UG Category Filter Bar -->
+      <div id="allied-category-filter-bar" class="hidden flex-wrap items-center gap-1 pt-0.5 pb-1 border-b border-slate-100" role="tablist" aria-label="Allied Exams Category Filter">
+        <button type="button" data-other-cat="ALL" class="other-cat-btn px-2 py-0.5 rounded-sm text-[11px] font-semibold bg-slate-900 text-white transition">All Categories (12)</button>
+        <button type="button" data-other-cat="SPACE_RESEARCH" class="other-cat-btn px-2 py-0.5 rounded-sm text-[11px] font-medium bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100 transition">Space &amp; Research: IIST, ISI, CMI, NEST (4)</button>
+        <button type="button" data-other-cat="MANAGEMENT" class="other-cat-btn px-2 py-0.5 rounded-sm text-[11px] font-medium bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100 transition">Management: IPMAT &amp; JIPMAT (3)</button>
+        <button type="button" data-other-cat="CENTRAL_UNIV" class="other-cat-btn px-2 py-0.5 rounded-sm text-[11px] font-medium bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100 transition">Central &amp; Liberal: CUET &amp; Ashoka (2)</button>
+        <button type="button" data-other-cat="DESIGN_ARCH" class="other-cat-btn px-2 py-0.5 rounded-sm text-[11px] font-medium bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100 transition">Design &amp; Arch: UCEED &amp; NATA (2)</button>
+        <button type="button" data-other-cat="DEFENCE" class="other-cat-btn px-2 py-0.5 rounded-sm text-[11px] font-medium bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100 transition">Defence: UPSC NDA &amp; NA (1)</button>
+        <button type="button" data-other-cat="OPEN_ONLY" class="other-cat-btn px-2 py-0.5 rounded-sm text-[11px] font-medium bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100 transition">Open Now Only (2)</button>
+      </div>
+
+      <!-- Row 2: Search, Tier, Route, Sort & Inline Count -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-2 items-center">
+        <div class="lg:col-span-4 relative">
+          <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Filter by college, exam, city, or route..."
+            class="w-full pl-8 pr-6 py-1 rounded-sm border border-slate-300 text-xs text-slate-900 bg-white focus:outline-none focus:border-slate-900"
+          />
+          <button
+            id="btn-clear-search"
+            type="button"
+            title="Clear search"
+            class="hidden absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-bold"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="lg:col-span-3">
+          <label for="filter-tier" class="sr-only">Tier</label>
+          <select
+            id="filter-tier"
+            class="w-full px-2 py-1 rounded-sm border border-slate-300 text-xs text-slate-700 bg-white focus:outline-none focus:border-slate-900"
+          >
+            <option id="opt-tier-all" value="ALL">All Tiers &amp; Regions</option>
+            <option id="opt-tier-1" value="TIER_1">Tier 1</option>
+            <option id="opt-tier-2" value="TIER_2">Tier 2</option>
+            <option id="opt-tier-3" value="TIER_3">Tier 3</option>
+            <option id="opt-tier-ka" value="KARNATAKA">Karnataka &amp; Bengaluru Only</option>
+          </select>
+        </div>
+
+        <div class="lg:col-span-3">
+          <label for="filter-route" class="sr-only">Route</label>
+          <select
+            id="filter-route"
+            class="w-full px-2 py-1 rounded-sm border border-slate-300 text-xs text-slate-700 bg-white focus:outline-none focus:border-slate-900"
+          >
+            <option value="ALL">All Admission Routes</option>
+            <option value="JEE Main">Accepts JEE Main / JEE Adv</option>
+            <option value="KCET">Accepts KCET (Karnataka CET)</option>
+            <option value="COMEDK">Accepts COMEDK UGET</option>
+            <option value="University Exam">University Own Entrance Exam</option>
+          </select>
+        </div>
+
+        <div class="lg:col-span-2">
+          <label for="sort-select" class="sr-only">Sort</label>
+          <select
+            id="sort-select"
+            class="w-full px-2 py-1 rounded-sm border border-slate-300 text-xs text-slate-700 bg-white focus:outline-none focus:border-slate-900"
+          >
+            <option value="STATUS_PRIORITY">Sort: Priority First</option>
+            <option value="TIER_ASC">Sort: Tier 1 → Tier 3</option>
+            <option value="DEADLINE_ASC">Sort: Earliest Deadline</option>
+            <option value="NAME_ASC">Sort: Name (A → Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Minimal Status Line -->
+      <div class="flex items-center justify-between text-[11px] text-slate-500 pt-0.5">
+        <div id="results-summary-text">Loading sources...</div>
+        <button
+          id="btn-reset-filters"
+          type="button"
+          class="text-slate-600 hover:text-slate-900 transition underline underline-offset-2"
+        >
+          Reset Filters
+        </button>
+      </div>
+    </section>
+
+    <!-- Cards Grid -->
+    <section id="cards-view-container" aria-label="Application Cards" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3"></section>
+
+    <!-- Compact Table View -->
+    <section id="table-view-container" aria-label="Application Table" class="hidden bg-white border border-slate-200 rounded overflow-hidden">
+      <div class="overflow-x-auto custom-scrollbar">
+        <table class="w-full min-w-[920px] text-left border-collapse">
+          <thead>
+            <tr class="bg-slate-50 text-slate-500 border-b border-slate-200 text-[11px] font-medium">
+              <th class="py-2 px-3">Status</th>
+              <th class="py-2 px-3">Institution / Exam</th>
+              <th class="py-2 px-3">Tier</th>
+              <th class="py-2 px-3">Routes</th>
+              <th class="py-2 px-3">Opens</th>
+              <th class="py-2 px-3">Deadline</th>
+              <th class="py-2 px-3">Track</th>
+              <th class="py-2 px-3 text-right">Links</th>
+            </tr>
+          </thead>
+          <tbody id="table-body-rows" class="divide-y divide-slate-100 text-xs"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Empty State -->
+    <section id="empty-state" class="hidden bg-white border border-slate-200 rounded p-8 text-center space-y-2">
+      <h3 class="text-sm font-semibold text-slate-800">No matching institutions or exams</h3>
+      <p id="empty-state-desc" class="text-xs text-slate-500 max-w-md mx-auto">
+        Clear your search filter or switch to All Sources.
+      </p>
+      <button
+        id="btn-empty-reset"
+        type="button"
+        class="inline-flex items-center px-3 py-1.5 rounded-sm text-xs font-medium bg-slate-900 hover:bg-slate-800 text-white transition"
+      >
+        Show All Monitored Sources
+      </button>
+    </section>
+
+  </main>
+
+  <!-- Reminders & Schedule Modal -->
+  <div
+    id="reminders-modal"
+    class="fixed inset-0 bg-slate-900/50 z-50 hidden items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+  >
+    <div class="bg-white rounded max-w-3xl w-full max-h-[85vh] flex flex-col shadow-lg border border-slate-200 overflow-hidden">
+      <div class="px-4 py-3 bg-slate-900 text-white flex items-center justify-between">
+        <div>
+          <h2 id="modal-title" class="text-sm font-semibold">Automated Schedule &amp; Deadline Reminders</h2>
+        </div>
+        <button
+          id="btn-close-reminders"
+          type="button"
+          class="w-6 h-6 rounded-sm bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center text-xs"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="p-4 overflow-y-auto custom-scrollbar space-y-3 text-xs">
+        <div class="flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-sm bg-slate-50 border border-slate-200 text-[11px] text-slate-600">
+          <span><strong>Schedule:</strong> Twice daily (08:00 &amp; 20:00 IST)</span>
+          <span>•</span>
+          <span><strong>Alerts:</strong> 14d, 7d, 3d, 1d &amp; 0d before fixed closing dates</span>
+          <span>•</span>
+          <span><strong>Runner:</strong> <code class="font-mono">admissions_monitor.py</code></span>
+        </div>
+
+        <div class="border border-slate-200 rounded-sm overflow-hidden">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 text-[11px] font-semibold">
+                <th class="py-2 px-3">Exam / Institution</th>
+                <th class="py-2 px-3">Deadline</th>
+                <th class="py-2 px-3">14d</th>
+                <th class="py-2 px-3">7d</th>
+                <th class="py-2 px-3">3d</th>
+                <th class="py-2 px-3">1d</th>
+                <th class="py-2 px-3">Final Day</th>
+              </tr>
+            </thead>
+            <tbody id="reminders-table-body" class="divide-y divide-slate-100 text-xs"></tbody>
+          </table>
+        </div>
+        <p class="text-[11px] text-slate-500">
+          Rolling / multi-phase open forms (PESU, CHRIST, JAIN, REVA, DSU, UPES, SNU) activate countdown triggers once a fixed closing date is published.
+        </p>
+      </div>
+
+      <div class="px-4 py-2.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+        <span class="text-[11px] text-slate-500">Latest check: <strong id="modal-last-verified">Oct 29, 2026 20:35 IST</strong></span>
+        <button
+          id="btn-close-reminders-footer"
+          type="button"
+          class="px-3 py-1 rounded-sm text-xs font-medium bg-slate-900 hover:bg-slate-800 text-white transition"
+        >
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div
+    id="toast-banner"
+    class="fixed bottom-4 right-4 z-50 hidden bg-slate-900 text-white px-3.5 py-2 rounded shadow border border-slate-700 text-xs font-medium items-center gap-2"
+  >
+    <span id="toast-message">Saved</span>
+  </div>
+
+  <footer class="border-t border-slate-200 bg-white mt-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500">
+      <div>
+        Latest verified check: <strong id="footer-last-verified" class="text-slate-700">Oct 29, 2026 20:35 IST</strong>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="https://docs.google.com/spreadsheets/d/1khafXco2_PCS7ZGj4g4v2QrBYCT6ZHqCdCPktnt2YCs/edit" target="_blank" rel="noopener noreferrer" class="text-slate-700 hover:underline font-medium">Google Sheet State DB</a>
+        <span>•</span>
+        <span>Twice-Daily Monitor (08:00 &amp; 20:00 IST)</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Embedded Offline Fallback Snapshot (Generated from Google Sheet DB) -->
+  <script id="embedded-fallback-data" type="application/json">{"snapshotDate":"Oct 29, 2026 20:35 IST","siteConfig":{"active_banner_title":"JEE Main 2027 (Session 1) \u2014 NTA Application Window Open","active_banner_text":"NTA registration for Session 1 is open through <strong>November 22, 2026 (11:50 PM IST)</strong>. Exams are scheduled for January 20\u201328, 2027.","active_banner_url":"https://jeemain.nta.nic.in/online-application-form-for-jee-main-2027-session-1/","active_banner_btn_text":"Apply via NTA Portal","active_banner_event_id":"NAT-NTA-JEEMAIN-2027"},"admissions":[{"id":"NAT-NTA-JEEMAIN-2027","name":"JEE Main 2027 (Session 1 & Session 2) \u2014 NTA","shortTag":"JEE Main 2027","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":false,"status":"OPEN","priority":"DEADLINE CONFIRMED \u2022 NOV 22","routes":["JEE Main"],"routesText":"JEE Main","openDate":"Oct 24, 2026","deadlineText":"Nov 22, 2026 (11:50 PM)","deadlineIso":"2026-11-22","examWindow":"Session 1: Jan 20\u201328, 2027 \u2022 Session 2: Apr 2\u20137, 2027","feeOrNotes":"NTA Information Bulletin & Session 1 application released Oct 24, 2026. Apply online before Nov 22, 2026 (late fee window Nov 23\u201326).","officialUrl":"https://jeemain.nta.nic.in/","applyUrl":"https://jeemain.nta.nic.in/online-application-form-for-jee-main-2027-session-1/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-PESU-BTECH-2027","name":"PES University (RR & EC Campuses)","shortTag":"PESU B.Tech 2027","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"OPEN","priority":"OPEN \u2022 MULTI-WINDOW","routes":["JEE Main","KCET"],"routesText":"JEE Main 2027 & KCET 2027 Scores Only","openDate":"Sep 3, 2026","deadlineText":"Feb 2027 (EAC JEE Test 1 Window) / June 2027","deadlineIso":null,"examWindow":"Counselling: Feb 2027 (EAC) & June \u2013 July 2027","feeOrNotes":"Registrations open since Sep 3, 2026. Upload JEE Main Session 1 scores in Feb 2027 for Early Admissions Commitment round.","officialUrl":"https://admissions.pes.edu/registration/Impdates.html","applyUrl":"https://admissions.pes.edu/registration","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-MAHE-MET-2027","name":"Manipal Academy of Higher Education (MIT Manipal, MIT Bengaluru, MUJ Jaipur, SMIT) \u2014 MET 2027","shortTag":"MAHE MET 2027","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"OPEN","priority":"DEADLINE CONFIRMED \u2022 MAR 15","routes":["University Exam"],"routesText":"MET 2027 (Manipal Entrance Test)","openDate":"Oct 19, 2026","deadlineText":"Mar 15, 2027 (Phase 1)","deadlineIso":"2027-03-15","examWindow":"Exam: April \u2013 May 2027","feeOrNotes":"Single MET 2027 application covers MIT Manipal (flagship), MIT Bengaluru (Yelahanka), SMIT, and Manipal University Jaipur (jaipur.manipal.edu).","officialUrl":"https://www.manipal.edu/admissions/entrance-exams","applyUrl":"https://apply.manipal.edu/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"NAT-VIT-VITEEE-2027","name":"Vellore Institute of Technology \u2014 VITEEE 2027 (Vellore, Chennai, AP, Bhopal)","shortTag":"VITEEE 2027","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":false,"status":"OPEN","priority":"DEADLINE CONFIRMED \u2022 MAR 31","routes":["University Exam"],"routesText":"VITEEE 2027","openDate":"Oct 15, 2026","deadlineText":"Mar 31, 2027","deadlineIso":"2027-03-31","examWindow":"Exam: Late April \u2013 Early May 2027","feeOrNotes":"Application fee: \u20b91,450. Official B.Tech 2027\u201328 portal is live at viteee.vit.ac.in.","officialUrl":"https://vit.ac.in/admissions/overview","applyUrl":"https://viteee.vit.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"PVT-SNU-SNUSAT-2027","name":"Shiv Nadar University (Delhi-NCR) \u2014 SNUSAT 2027 B.Tech Admissions","shortTag":"SNUSAT 2027","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":false,"status":"OPEN","priority":"OPEN \u2022 ROLLING ROUNDS","routes":["University Exam","JEE Main"],"routesText":"SNUSAT + APT / JEE Main ( >= 80 percentile) / SAT / ACT","openDate":"Oct 2026","deadlineText":"Rolling Rounds (Dec 2026 \u2013 May 2027)","deadlineIso":null,"examWindow":"Rolling Rounds: Dec 2026 \u2013 June 2027","feeOrNotes":"Direct admission path available for JEE Main candidates with >=80 percentile.","officialUrl":"https://snu.edu.in/admissions/","applyUrl":"https://ugapplications.snu.edu.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-CHRIST-BTECH-2027","name":"CHRIST (Deemed to be University), Bengaluru \u2014 B.Tech","shortTag":"CHRIST B.Tech 2027","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":true,"status":"OPEN","priority":"OPEN \u2022 SESSION-WISE","routes":["University Exam"],"routesText":"Christ Entrance Test (CUET)","openDate":"Oct 15, 2026","deadlineText":"Session-wise (Dec 2026 \u2013 May 2027)","deadlineIso":null,"examWindow":"Selection Rounds: Dec 2026 \u2013 May 2027","feeOrNotes":"School of Engineering and Technology UG 2027 application portal is open across multiple selection rounds.","officialUrl":"https://christuniversity.in/admission/2027-ugpgsp","applyUrl":"https://espro.christuniversity.in/Application/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-JAIN-JET-2027","name":"JAIN (Deemed-to-be University), Bengaluru \u2014 JET-UG 2027","shortTag":"JAIN JET-UG 2027","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":true,"status":"OPEN","priority":"OPEN \u2022 PHASE-WISE","routes":["University Exam","JEE Main","KCET","COMEDK"],"routesText":"JET-UG 2027 / JEE Main / KCET / COMEDK / Uni-GAUGE","openDate":"Oct 2026","deadlineText":"TBA (Phase-wise)","deadlineIso":null,"examWindow":"JET Exam: April \u2013 May 2027","feeOrNotes":"Faculty of Engineering & Technology (JU-FET) B.Tech 2027 registrations open.","officialUrl":"https://set.jainuniversity.ac.in/btech-admissions-in-bangalore","applyUrl":"https://www.jainuniversity.ac.in/jet-ug","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-REVA-BTECH-2027","name":"REVA University, Bengaluru \u2014 B.Tech / REVACET 2027","shortTag":"REVA B.Tech 2027","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":true,"status":"OPEN","priority":"OPEN \u2022 PHASE-WISE","routes":["University Exam","JEE Main","KCET","COMEDK"],"routesText":"REVACET / KCET / COMEDK / JEE Main","openDate":"Oct 2026","deadlineText":"TBA (Phase-wise)","deadlineIso":null,"examWindow":"Exam: April \u2013 May 2027","feeOrNotes":"'Apply for 2027-28' application portal active on admission.reva.edu.in.","officialUrl":"https://www.reva.edu.in/new-admissions/","applyUrl":"https://admission.reva.edu.in/s/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"PVT-UPES-UPESEAT-2027","name":"UPES Dehradun \u2014 UPESEAT 2027 B.Tech Admissions","shortTag":"UPESEAT 2027","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":false,"status":"OPEN","priority":"OPEN \u2022 PHASE-WISE","routes":["University Exam","JEE Main"],"routesText":"UPESEAT 2027 / JEE Main / Board Merit / SAT / CUET","openDate":"Sep 15, 2026","deadlineText":"Phase-wise (Jan \u2013 May 2027)","deadlineIso":null,"examWindow":"Multiple Exam Windows (Jan \u2013 May 2027)","feeOrNotes":"Session Year 2027 B.Tech registration active on admission.upes.ac.in.","officialUrl":"https://www.upes.ac.in/admissions/admission-alerts/upeseat","applyUrl":"https://admission.upes.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"NAT-AMRITA-AEEE-2027","name":"Amrita Vishwa Vidyapeetham (Bengaluru, Coimbatore, Amritapuri, Chennai, Amaravati) \u2014 AEEE 2027","shortTag":"Amrita AEEE 2027","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"IMMINENT","priority":"OPENING SOON \u2022 NOV 2026","routes":["University Exam","JEE Main"],"routesText":"AEEE 2027 (70% seats) & JEE Main (30% seats)","openDate":"Expected Nov 2026","deadlineText":"Expected Jan 2027 (Phase 1)","deadlineIso":null,"examWindow":"Phase 1: Jan/Feb 2027 \u2022 Phase 2: Apr/May 2027","feeOrNotes":"Official site banner states 'AEEE 2027 Application To Open Soon'. Includes Bengaluru campus.","officialUrl":"https://aeee.amrita.edu/","applyUrl":"https://aeee.amrita.edu/portal","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"NAT-SRM-SRMJEEE-2027","name":"SRM Institute of Science & Technology \u2014 SRMJEEE 2027","shortTag":"SRMJEEE 2027","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":false,"status":"IMMINENT","priority":"OPENING SOON \u2022 NOV 2026","routes":["University Exam"],"routesText":"SRMJEEE 2027 (3 Phases)","openDate":"Expected Nov 2026","deadlineText":"Expected Apr 2027 (Phase 1)","deadlineIso":null,"examWindow":"Phases in April, June & July 2027","feeOrNotes":"Portal is transitioning from 2026 to 2027 cycle; Phase 1 registration opens in November.","officialUrl":"https://www.srmist.edu.in/admission-india/","applyUrl":"https://applications.srmist.edu.in/btech","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-NMIT-NUCAT-2027","name":"Nitte Meenakshi Institute of Technology (NMIT Bengaluru) & NMAMIT \u2014 NUCAT 2027","shortTag":"NMIT NUCAT 2027","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":true,"status":"IMMINENT","priority":"OPENING SOON \u2022 DEC 2026","routes":["University Exam","JEE Main"],"routesText":"NUCAT 2027 & JEE Main (up to 2% seats)","openDate":"Expected Dec 2026","deadlineText":"Expected Mar\u2013Apr 2027","deadlineIso":null,"examWindow":"3 Test Phases: Feb \u2013 May 2027","feeOrNotes":"NMIT Yelahanka Bengaluru is a constituent college of Nitte Deemed University and admits via NUCAT and JEE Main.","officialUrl":"https://nitte.edu.in/nmit/admissions.php","applyUrl":"https://nucat.nitte.edu.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-RVU-BTECH-2027","name":"R.V. University (RVU), Bengaluru \u2014 B.Tech (Hons.)","shortTag":"RV University B.Tech","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":true,"status":"IMMINENT","priority":"OPENING SOON \u2022 NOV 2026","routes":["University Exam","JEE Main","KCET"],"routesText":"RVSAT / JEE Main / KCET","openDate":"Expected Nov 2026","deadlineText":"Round-wise (Spring/Summer 2027)","deadlineIso":null,"examWindow":"Selection & Seat Allotment Rounds","feeOrNotes":"Offers B.Tech (Hons.) in CSE on RV Vidyanikethan campus; accepts JEE Main, KCET, and RVSAT.","officialUrl":"https://rvu.edu.in/admissions/","applyUrl":"https://rvu.edu.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-DSU-DSAT-2027","name":"Dayananda Sagar University (DSU), Bengaluru \u2014 DSAT 2027","shortTag":"DSU DSAT 2027","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":true,"status":"OPEN","priority":"OPEN \u2022 PHASE-WISE","routes":["University Exam","JEE Main","KCET","COMEDK"],"routesText":"DSAT / KCET / COMEDK / Uni-GAUGE / JEE Main","openDate":"Oct 2026","deadlineText":"Expected Apr \u2013 May 2027","deadlineIso":null,"examWindow":"Multiple DSAT Phases (Spring 2027)","feeOrNotes":"2027-28 online application active on admissions.dsu.edu.in. 2027-28 B.Tech fee structure published (CSE/AIML/DS/Cyber: \u20b94.25L\u2013\u20b94.50L/yr via JEE Main/COMEDK/Uni-GAUGE; CET Code: E240, COMEDK Code: E182).","officialUrl":"https://www.dsu.edu.in/eligibility","applyUrl":"https://admissions.dsu.edu.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-PRESIDENCY-BTECH-2027","name":"Presidency University, Bengaluru \u2014 B.Tech","shortTag":"Presidency Bengaluru","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":true,"status":"IMMINENT","priority":"OPENING SOON \u2022 NOV\u2013DEC 2026","routes":["University Exam","JEE Main","KCET","COMEDK"],"routesText":"PJET / JEE Main / KCET / COMEDK","openDate":"Expected Nov \u2013 Dec 2026","deadlineText":"Expected May 2027","deadlineIso":null,"examWindow":"Rolling Evaluation Rounds (2027)","feeOrNotes":"Accepts national and state entrance test scores alongside university evaluation.","officialUrl":"https://presidencyuniversity.in/","applyUrl":"https://presidencyuniversity.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"PVT-MAHINDRA-BTECH-2027","name":"Mahindra University, Hyderabad \u2014 Ecole Centrale School of Engineering B.Tech","shortTag":"Mahindra Univ B.Tech","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":false,"status":"IMMINENT","priority":"OPENING SOON \u2022 NOV\u2013DEC 2026","routes":["JEE Main"],"routesText":"JEE Main 2027 / JEE Advanced Eligibility / SAT / ACT","openDate":"Expected Nov \u2013 Dec 2026","deadlineText":"Expected May \u2013 June 2027","deadlineIso":null,"examWindow":"Rolling Counselling Rounds (Jan \u2013 July 2027)","feeOrNotes":"Accepts JEE Main rank or SAT score for 4-year B.Tech programs.","officialUrl":"https://www.mahindrauniversity.edu.in/programs/b-tech/eligibility-criteria/","applyUrl":"https://www.mahindrauniversity.edu.in/programs/b-tech/eligibility-criteria/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-RUAS-BLR-2027","name":"M.S. Ramaiah University of Applied Sciences (MSRUAS), Bengaluru","shortTag":"MSRUAS Bengaluru","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":true,"status":"IMMINENT","priority":"OPENING SOON \u2022 DEC 2026","routes":["University Exam","KCET","COMEDK","JEE Main"],"routesText":"RUAS AT / KCET / COMEDK / JEE Main","openDate":"Expected Dec 2026","deadlineText":"Expected Apr \u2013 May 2027","deadlineIso":null,"examWindow":"Spring/Summer 2027","feeOrNotes":"Separate university from MSRIT; offers B.Tech at Peenya & Mathikere campuses via RUAS AT, KCET, COMEDK & JEE Main.","officialUrl":"https://www.msruas.ac.in/college-of-engineering/","applyUrl":"https://admissions.msruas.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"NAT-IIT-JEEADV-2027","name":"JEE Advanced 2027 (IITs & IISc B.Tech)","shortTag":"JEE Advanced 2027","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":false,"status":"UPCOMING","priority":"APR 2027 WINDOW","routes":["JEE Main"],"routesText":"JEE Advanced (Top 2.5L in JEE Main)","openDate":"Expected April 2027","deadlineText":"Expected Early May 2027","deadlineIso":null,"examWindow":"Exam: May 2027","feeOrNotes":"Mandatory for all 23 IIT B.Tech programs and IISc Bengaluru B.Tech programs.","officialUrl":"https://jeeadv.ac.in/","applyUrl":"https://jeeadv.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"NAT-IISC-BTECH-2027","name":"IISc Bengaluru \u2014 B.Tech in Mathematics and Computing & BS (Research)","shortTag":"IISc Bengaluru B.Tech","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":true,"status":"UPCOMING","priority":"MAR\u2013JUNE 2027 WINDOW","routes":["JEE Main","University Exam"],"routesText":"JEE Advanced (for B.Tech Math & Computing); IAT/JEE (for BS Research)","openDate":"Expected Mar \u2013 Apr 2027","deadlineText":"Expected May \u2013 June 2027","deadlineIso":null,"examWindow":"JoSAA / IISc Portal: June 2027","feeOrNotes":"IISc B.Tech programs admit via JEE Advanced through JoSAA; 4-yr BS (Research) requires applying on admissions.iisc.ac.in.","officialUrl":"https://btech-ug.iisc.ac.in/","applyUrl":"https://www.iisc.ac.in/admissions/undergraduate-btech/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"NAT-BITS-BITSAT-2027","name":"BITSAT 2027 (BITS Pilani, Goa & Hyderabad Campuses)","shortTag":"BITSAT 2027","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":false,"status":"UPCOMING","priority":"JAN 2027 WINDOW","routes":["University Exam"],"routesText":"BITSAT 2027 (Session 1 & 2)","openDate":"Expected Jan 2027","deadlineText":"Expected Mar \u2013 Apr 2027","deadlineIso":null,"examWindow":"Session 1: May 2027 \u2022 Session 2: June 2027","feeOrNotes":"Merit-only admissions to BITS Pilani, Goa, and Hyderabad; 2027 registration typically opens in January.","officialUrl":"https://www.bitsadmission.com/","applyUrl":"https://www.bitsadmission.com/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"NAT-IIITH-UGEE-2027","name":"IIIT Hyderabad UG Admissions (UGEE, JEE Main, SPEC, Olympiad, DASA)","shortTag":"IIIT-H UGEE / JEE","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":false,"status":"UPCOMING","priority":"FEB 2027 WINDOW","routes":["University Exam","JEE Main"],"routesText":"UGEE (Dual Degree), JEE Main (Single Degree B.Tech), SPEC","openDate":"Expected Feb 2027","deadlineText":"Expected Mar \u2013 Apr 2027","deadlineIso":null,"examWindow":"UGEE Exam: Apr / May 2027","feeOrNotes":"Does not use JoSAA; separate direct applications required on ugadmissions.iiit.ac.in for each mode.","officialUrl":"https://ugadmissions.iiit.ac.in/","applyUrl":"https://ugadmissions.iiit.ac.in/ugee/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-IIITB-BTECH-2027","name":"IIIT Bangalore (IIITB) \u2014 B.Tech & iMTech Admissions","shortTag":"IIIT Bangalore","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":true,"status":"UPCOMING","priority":"APR 2027 WINDOW","routes":["JEE Main"],"routesText":"JEE Main 2027 (Direct IIITB Portal Application)","openDate":"Expected Apr 2027","deadlineText":"Expected June 2027","deadlineIso":null,"examWindow":"IIITB Counselling: June \u2013 July 2027","feeOrNotes":"Important: IIIT Bangalore does NOT participate in JoSAA. You must apply separately on iiitb.ac.in.","officialUrl":"https://www.iiitb.ac.in/courses/btech-integrated-mtech","applyUrl":"https://www.iiitb.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"NAT-JAC-DELHI-2027","name":"JAC Delhi 2027 Counselling (DTU, NSUT, IIIT-Delhi, IGDTUW)","shortTag":"JAC Delhi 2027","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":false,"status":"UPCOMING","priority":"MAY 2027 WINDOW","routes":["JEE Main"],"routesText":"JEE Main 2027 Rank (15% Outside-Delhi Quota)","openDate":"Expected May 2027","deadlineText":"Expected June 2027","deadlineIso":null,"examWindow":"Counselling Rounds: June \u2013 July 2027","feeOrNotes":"Separate counselling from JoSAA on jacdelhi.admissions.nic.in for DTU, NSUT, and IIIT-Delhi (15% seats for Outside Delhi students).","officialUrl":"https://jacdelhi.admissions.nic.in/","applyUrl":"https://jacdelhi.admissions.nic.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"NAT-IISER-IAT-2027","name":"IISER Aptitude Test (IAT 2027) \u2014 IISER Bhopal B.Tech & BS-MS Programs","shortTag":"IISER IAT 2027","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":false,"status":"UPCOMING","priority":"MAR 2027 WINDOW","routes":["University Exam"],"routesText":"IAT 2027","openDate":"Expected Mar 2027","deadlineText":"Expected May 2027","deadlineIso":null,"examWindow":"Exam: May / June 2027","feeOrNotes":"Covers 4-year B.Tech (Engineering/Data Science at IISER Bhopal), IISc BS Research, and 7 IISERs.","officialUrl":"https://iiseradmission.in/","applyUrl":"https://iiseradmission.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"NAT-WBJEE-2027","name":"WBJEE 2027 \u2014 Jadavpur University & West Bengal Engineering Colleges","shortTag":"WBJEE (Jadavpur)","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":false,"status":"UPCOMING","priority":"JAN 2027 WINDOW","routes":["University Exam"],"routesText":"WBJEE 2027 (10% All-India Quota at Jadavpur University via WBJEE GMR)","openDate":"Expected Dec 2026 \u2013 Jan 2027","deadlineText":"Expected Feb 2027","deadlineIso":null,"examWindow":"Exam: Late April 2027","feeOrNotes":"Out-of-state students can write WBJEE for the 10% All-India quota at Jadavpur University (90% is WB domicile) and private WB institutes.","officialUrl":"https://wbjeeb.in/wbjee-exam/","applyUrl":"https://wbjeeb.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"NAT-MHTCET-2027","name":"MHT CET 2027 & Maharashtra CAP Counselling (COEP, VJTI, PICT, SPIT)","shortTag":"MHT CET (COEP/VJTI)","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":false,"status":"UPCOMING","priority":"JAN 2027 WINDOW","routes":["JEE Main","University Exam"],"routesText":"MHT CET 2027 & JEE Main (15% All-India CAP Quota)","openDate":"Expected Jan 2027","deadlineText":"Expected Mar 2027","deadlineIso":null,"examWindow":"Exam: Apr/May 2027 \u2022 CAP: June \u2013 Aug 2027","feeOrNotes":"Non-Maharashtra JEE aspirants are eligible for 15% All-India seats via JEE Main score in Maharashtra State CET Cell CAP counselling.","officialUrl":"https://cetcell.mahacet.org/","applyUrl":"https://cetcell.mahacet.org/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-KEA-KCET-2027","name":"Karnataka Common Entrance Test (KCET 2027) & KEA Counselling","shortTag":"KCET 2027 (KEA)","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"JAN 2027 WINDOW","routes":["KCET"],"routesText":"KCET (UGCET)","openDate":"Expected Jan 2027","deadlineText":"Expected Feb \u2013 Mar 2027","deadlineIso":null,"examWindow":"Exam: Apr 2027 \u2022 Counselling: June \u2013 Aug 2027","feeOrNotes":"Primary state admission gateway for RVCE, BMSCE, MSRIT, PESU, UVCE, BIT, DSCE, SIT, JSSSTU, NIE & KLE Tech.","officialUrl":"https://cetonline.karnataka.gov.in/kea/","applyUrl":"https://cetonline.karnataka.gov.in/kea/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-COMEDK-UGET-2027","name":"COMEDK UGET 2027 & COMEDK Counselling","shortTag":"COMEDK UGET 2027","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"FEB 2027 WINDOW","routes":["COMEDK"],"routesText":"COMEDK UGET / Uni-GAUGE","openDate":"Expected Feb 2027","deadlineText":"Expected Mar \u2013 Apr 2027","deadlineIso":null,"examWindow":"Exam: May 2027 \u2022 Counselling: June \u2013 Aug 2027","feeOrNotes":"All-India merit entrance route for RVCE, BMSCE, MSRIT, and 150+ private engineering colleges in Karnataka.","officialUrl":"https://www.comedk.org/","applyUrl":"https://www.comedk.org/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-RVCE-BTECH-2027","name":"RV College of Engineering (RVCE), Bengaluru","shortTag":"RVCE Bengaluru","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET / COMEDK","routes":["KCET","COMEDK"],"routesText":"KCET (KEA), COMEDK UGET, Management Quota","openDate":"Via KCET (Jan) / COMEDK (Feb)","deadlineText":"Via KCET / COMEDK","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"No separate RVCE entrance test; merit seats allotted strictly via KEA KCET and COMEDK UGET.","officialUrl":"https://rvce.edu.in/","applyUrl":"https://rvce.edu.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-BMSCE-BTECH-2027","name":"BMS College of Engineering (BMSCE), Bengaluru","shortTag":"BMSCE Bengaluru","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET / COMEDK","routes":["KCET","COMEDK"],"routesText":"KCET (KEA), COMEDK UGET, Management Quota","openDate":"Via KCET (Jan) / COMEDK (Feb)","deadlineText":"Via KCET / COMEDK","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"Admits via KCET and COMEDK UGET counselling.","officialUrl":"https://bmsce.ac.in/","applyUrl":"https://bmsce.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-MSRIT-BTECH-2027","name":"Ramaiah Institute of Technology (MSRIT), Bengaluru","shortTag":"MSRIT Bengaluru","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET / COMEDK","routes":["KCET","COMEDK"],"routesText":"KCET (KEA), COMEDK UGET, Management Quota","openDate":"Via KCET (Jan) / COMEDK (Feb)","deadlineText":"Via KCET / COMEDK","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"Autonomous institute affiliated to VTU; admits through KCET and COMEDK.","officialUrl":"https://www.msrit.edu/admissions.html","applyUrl":"https://www.msrit.edu/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"NAT-CUSAT-CAT-2027","name":"Cochin University of Science and Technology (CUSAT CAT 2027)","shortTag":"CUSAT CAT 2027","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":false,"status":"UPCOMING","priority":"JAN\u2013FEB 2027 WINDOW","routes":["University Exam"],"routesText":"CUSAT CAT 2027 CBT","openDate":"Expected Jan \u2013 Feb 2027","deadlineText":"Expected Mar 2027","deadlineIso":null,"examWindow":"Exam: May 2027 \u2022 Counselling: June \u2013 July 2027","feeOrNotes":"Public university in Kochi offering All-India merit seats in B.Tech CSE, ECE, IT, Naval Architecture & Ship Building, and Safety & Fire Engg.","officialUrl":"https://cusat.ac.in/","applyUrl":"https://admissions.cusat.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"PVT-THAPAR-BTECH-2027","name":"Thapar Institute of Engineering and Technology (TIET), Patiala","shortTag":"Thapar (TIET) 2027","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":false,"status":"UPCOMING","priority":"FEB 2027 WINDOW","routes":["JEE Main"],"routesText":"JEE Main 2027 & Class 12 PCM Merit","openDate":"Expected Feb 2027","deadlineText":"Expected May \u2013 July 2027","deadlineIso":null,"examWindow":"Counselling Rounds: May \u2013 Aug 2027","feeOrNotes":"Requires separate direct application on thapar.edu; seats allotted primarily on JEE Main rank.","officialUrl":"https://www.thapar.edu/admissions","applyUrl":"https://www.thapar.edu/admissions","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"PVT-LNMIIT-BTECH-2027","name":"The LNM Institute of Information Technology (LNMIIT), Jaipur","shortTag":"LNMIIT Jaipur 2027","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":false,"status":"UPCOMING","priority":"FEB\u2013MAR 2027 WINDOW","routes":["JEE Main"],"routesText":"JEE Main 2027 / DASA / Board Toppers","openDate":"Expected Feb \u2013 Mar 2027","deadlineText":"Expected June 2027","deadlineIso":null,"examWindow":"LNMIIT Counselling: June \u2013 Aug 2027","feeOrNotes":"No management quota; admissions strictly based on JEE Main percentile via LNMIIT portal.","officialUrl":"https://lnmiit.ac.in/","applyUrl":"https://lnmiit.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-SJCE-JSSSTU-2027","name":"JSS Science and Technology University (SJCE), Mysuru","shortTag":"JSSSTU (SJCE) Mysuru","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET / COMEDK","routes":["KCET","COMEDK"],"routesText":"KCET (KEA), COMEDK UGET","openDate":"Via KCET / COMEDK","deadlineText":"Via KCET / COMEDK","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"Flagship Mysuru engineering university (formerly SJCE).","officialUrl":"https://jssstuniv.in/","applyUrl":"https://jssstuniv.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-NIE-MYSURU-2027","name":"The National Institute of Engineering (NIE), Mysuru","shortTag":"NIE Mysuru","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET / COMEDK","routes":["KCET","COMEDK"],"routesText":"KCET (KEA), COMEDK UGET","openDate":"Via KCET / COMEDK","deadlineText":"Via KCET / COMEDK","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"Top autonomous engineering institute in Mysuru.","officialUrl":"https://nie.ac.in/","applyUrl":"https://nie.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-UVCE-BLR-2027","name":"University Visvesvaraya College of Engineering (UVCE), K.R. Circle, Bengaluru","shortTag":"UVCE Bengaluru","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET ONLY","routes":["KCET"],"routesText":"KCET 2027 (KEA Counselling Only)","openDate":"Via KCET (Expected Jan 2027)","deadlineText":"Via KCET 2027","deadlineIso":null,"examWindow":"KEA Option Entry: June \u2013 Aug 2027","feeOrNotes":"Public autonomous institution in Bengaluru with government fee structure; admits strictly via KCET.","officialUrl":"https://uvce.ac.in/","applyUrl":"https://cetonline.karnataka.gov.in/kea/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-DSCE-BTECH-2027","name":"Dayananda Sagar College of Engineering (DSCE), Bengaluru","shortTag":"DSCE Bengaluru","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET / COMEDK","routes":["KCET","COMEDK"],"routesText":"KCET (E007), COMEDK (E040), Management Quota","openDate":"Via KCET / COMEDK","deadlineText":"Via KCET / COMEDK","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"Autonomous VTU college (CET Code: E007 | COMEDK Code: E040 verified on dsce.edu.in/admissions).","officialUrl":"https://www.dsce.edu.in/admissions","applyUrl":"https://www.dsce.edu.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-BIT-BTECH-2027","name":"Bangalore Institute of Technology (BIT), Bengaluru","shortTag":"BIT Bengaluru","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET / COMEDK","routes":["KCET","COMEDK"],"routesText":"KCET (KEA), COMEDK UGET, Management Quota","openDate":"Via KCET / COMEDK","deadlineText":"Via KCET / COMEDK","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"Admits via KEA KCET and COMEDK UGET.","officialUrl":"https://bit-bangalore.edu.in/","applyUrl":"https://bit-bangalore.edu.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-BMSIT-BTECH-2027","name":"BMS Institute of Technology and Management (BMSIT&M), Bengaluru","shortTag":"BMSIT&M Bengaluru","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET / COMEDK","routes":["KCET","COMEDK"],"routesText":"KCET (KEA), COMEDK UGET, Management Quota","openDate":"Via KCET / COMEDK","deadlineText":"Via KCET / COMEDK","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"Autonomous institution under BMS Educational Trust; admits via KCET and COMEDK.","officialUrl":"https://bmsit.ac.in/","applyUrl":"https://bmsit.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-SIT-BTECH-2027","name":"Siddaganga Institute of Technology (SIT), Tumakuru","shortTag":"SIT Tumakuru","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET / COMEDK","routes":["KCET","COMEDK"],"routesText":"KCET (KEA), COMEDK UGET, JEE Main / Management","openDate":"Via KCET / COMEDK","deadlineText":"Via KCET / COMEDK","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"Premier autonomous engineering institution in Tumakuru; merit seats via KCET and COMEDK.","officialUrl":"https://sit.ac.in/admission/","applyUrl":"https://sit.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-KLETECH-BTECH-2027","name":"KLE Technological University, Hubballi / Belagavi / Bengaluru","shortTag":"KLE Tech University","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET / COMEDK","routes":["KCET","COMEDK"],"routesText":"KCET / COMEDK / JEE Main","openDate":"Via KCET / COMEDK","deadlineText":"Via KCET / COMEDK","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"Premier North Karnataka technological university admitting via KCET and COMEDK.","officialUrl":"https://www.kletech.ac.in/","applyUrl":"https://www.kletech.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-BNMIT-BLR-2027","name":"BNM Institute of Technology (BNMIT), Banashankari, Bengaluru","shortTag":"BNMIT Bengaluru","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET / COMEDK","routes":["KCET","COMEDK"],"routesText":"KCET (KEA) & COMEDK UGET","openDate":"Via KCET / COMEDK","deadlineText":"Via KCET / COMEDK","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"Autonomous engineering college in South Bengaluru admitting via KCET and COMEDK.","officialUrl":"https://www.bnmit.org/admission/","applyUrl":"https://www.bnmit.org/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-RNSIT-BLR-2027","name":"RNS Institute of Technology (RNSIT), Channasandra, Bengaluru","shortTag":"RNSIT Bengaluru","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET / COMEDK","routes":["KCET","COMEDK"],"routesText":"KCET (KEA) & COMEDK UGET","openDate":"Via KCET / COMEDK","deadlineText":"Via KCET / COMEDK","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"Admits via KEA KCET and COMEDK UGET.","officialUrl":"https://www.rnsit.ac.in/admissions/","applyUrl":"https://www.rnsit.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-CMRIT-BTECH-2027","name":"CMR Institute of Technology (CMRIT), Bengaluru","shortTag":"CMRIT Bengaluru","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET / COMEDK","routes":["KCET","COMEDK"],"routesText":"KCET, COMEDK, JEE Main","openDate":"Via KCET / COMEDK","deadlineText":"Via KCET / COMEDK","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"Whitefield/ITPL corridor engineering college admitting via KCET and COMEDK.","officialUrl":"https://www.cmrit.ac.in/admissions/undergraduate-admissions/","applyUrl":"https://www.cmrit.ac.in/admissions/undergraduate-admissions/","lastVerified":"Oct 29, 2026 20:35 IST"},{"id":"KA-NHCE-BLR-2027","name":"New Horizon College of Engineering (NHCE), Marathahalli, Bengaluru","shortTag":"NHCE Bengaluru","tierCode":"TIER_3","tierLabel":"Tier 3","isKarnataka":true,"status":"UPCOMING","priority":"VIA KCET","routes":["KCET"],"routesText":"KCET (KEA) & Management Quota","openDate":"Via KCET (Jan 2027)","deadlineText":"Via KCET 2027","deadlineIso":null,"examWindow":"Counselling: June \u2013 Aug 2027","feeOrNotes":"Outer Ring Road Bengaluru autonomous college admitting via KCET and institutional management quota.","officialUrl":"https://newhorizoncollegeofengineering.in/","applyUrl":"https://newhorizoncollegeofengineering.in/","lastVerified":"Oct 29, 2026 20:35 IST"}],"allied":[{"id":"OTHER-IIT-UCEED-2027","name":"UCEED 2027 \u2014 IIT Bombay, IIT Delhi, IIT Guwahati, IIT Hyderabad, IIT Roorkee & IIITDM (B.Des)","shortTag":"UCEED 2027 (IIT B.Des)","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":false,"status":"OPEN","priority":"CLOSES OCT 31 \u2022 LATE NOV 6","routes":["University Exam"],"routesText":"UCEED 2027 (Bachelor of Design at IITs \u2014 Open to PCM/Any Stream)","openDate":"Oct 1, 2026","deadlineText":"Oct 31, 2026 (Regular) / Nov 6, 2026 (Late Fee)","deadlineIso":"2026-10-31","examWindow":"Exam: Jan 17, 2027 (9:00 AM \u2013 12:00 PM)","feeOrNotes":"Registration Conducted by IIT Bombay is OPEN now. Regular fee window closes Oct 31, 2026; late fee (+\u20b9500) closes Nov 6, 2026 (5:00 PM).","officialUrl":"https://www.uceed.iitb.ac.in/2027/","applyUrl":"https://uceedapp.iitb.ac.in/UCEED/home.jsp","lastVerified":"Oct 29, 2026 20:35 IST","categoryCode":"DESIGN_ARCH","categoryLabel":"Design & Arch"},{"id":"OTHER-ASHOKA-AAT-2027","name":"Ashoka University (AAT 2027) \u2014 4-Yr B.Sc (Hons.) Computer Science, Physics, Math & Economics","shortTag":"Ashoka AAT 2027","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":false,"status":"OPEN","priority":"ROUND 1 DEADLINE \u2022 NOV 27","routes":["University Exam"],"routesText":"Ashoka Aptitude Assessment (AAA) + On-Spot Essay + Interview","openDate":"Oct 12, 2026","deadlineText":"Nov 27, 2026 (Round 1) / Rolling Rounds till May 2027","deadlineIso":"2026-11-27","examWindow":"Round 1 Assessment: Dec 6, 2026 (4 Rounds total)","feeOrNotes":"Offers 4-year B.Sc (Hons.) in Computer Science & Entrepreneurial Leadership, Physics, and Mathematics (non-B.Tech).","officialUrl":"https://www.ashoka.edu.in/admissions/undergraduate/","applyUrl":"https://apply.ashoka.edu.in/","lastVerified":"Oct 29, 2026 20:35 IST","categoryCode":"CENTRAL_UNIV","categoryLabel":"Liberal & Sciences"},{"id":"OTHER-UPSC-NDA1-2027","name":"UPSC NDA & NA (I) 2027 \u2014 National Defence Academy & Naval Academy (10+2 B.Tech Cadet Entry)","shortTag":"UPSC NDA-I 2027","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":false,"status":"IMMINENT","priority":"OPENS DEC 2, 2026 (CONFIRMED)","routes":["University Exam"],"routesText":"UPSC NDA Written Exam (Math + GAT) + 5-Day SSB Interview","openDate":"Dec 2, 2026 (Confirmed)","deadlineText":"Dec 22, 2026 (Confirmed UPSC Calendar)","deadlineIso":"2026-12-22","examWindow":"Written Exam: Apr 11, 2027 (Confirmed)","feeOrNotes":"Official UPSC 2027 Calendar confirms Notification on Dec 2, 2026 and closing on Dec 22, 2026 for Army, Navy & Air Force B.Tech/B.Sc cadets.","officialUrl":"https://upsc.gov.in/examinations/active-exams","applyUrl":"https://upsconline.nic.in/","lastVerified":"Oct 29, 2026 20:35 IST","categoryCode":"DEFENCE","categoryLabel":"Defence (Armed Forces)"},{"id":"OTHER-ISRO-IIST-2027","name":"IIST Thiruvananthapuram (ISRO / Dept. of Space) \u2014 B.Tech Aerospace, Avionics (ECE) & 5-Yr Dual Degree","shortTag":"ISRO / IIST B.Tech 2027","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":false,"status":"UPCOMING","priority":"MAY 2027 WINDOW","routes":["JEE Main"],"routesText":"JEE Advanced 2027 Score + Separate IIST Online Counselling Portal","openDate":"Expected Late May 2027","deadlineText":"Expected Mid-June 2027","deadlineIso":null,"examWindow":"JEE Adv: May 2027 \u2022 IIST Seat Allotment: June \u2013 July 2027","feeOrNotes":"Premier space institute under Dept. of Space (ISRO). Does NOT use JoSAA; apply separately on iist.ac.in. Eligible top graduates are absorbed directly into ISRO as Scientist/Engineer 'SC'.","officialUrl":"https://www.iist.ac.in/admission/undergraduate-admissions-overview","applyUrl":"https://www.iist.ac.in/admission/undergraduate-admissions-announcements","lastVerified":"Oct 29, 2026 20:35 IST","categoryCode":"SPACE_RESEARCH","categoryLabel":"Space & Research (ISRO)"},{"id":"OTHER-NTA-CUETUG-2027","name":"CUET (UG) 2027 \u2014 Common University Entrance Test (DU CIC B.Tech, BHU, JNU & 250+ Universities)","shortTag":"CUET UG 2027 (NTA)","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":false,"status":"UPCOMING","priority":"JAN\u2013FEB 2027 WINDOW","routes":["University Exam"],"routesText":"CUET (UG) 2027 Computer-Based / Hybrid Test (NTA)","openDate":"Expected Jan \u2013 Feb 2027","deadlineText":"Expected Late Feb \u2013 Mar 2027","deadlineIso":null,"examWindow":"Exam: May 2027 \u2022 CSAS / Univ Counselling: June \u2013 July 2027","feeOrNotes":"Covers Delhi University Cluster Innovation Centre (B.Tech IT & Mathematical Innovations), DU B.Sc (Hons.) CS/Physics/Math/Stats, BHU, and Central Universities.","officialUrl":"https://exams.nta.ac.in/CUET-UG/","applyUrl":"https://cuet.nta.nic.in/","lastVerified":"Oct 29, 2026 20:35 IST","categoryCode":"CENTRAL_UNIV","categoryLabel":"Central Universities"},{"id":"OTHER-IIM-IPMAT-INDORE-2027","name":"IPMAT Indore 2027 \u2014 IIM Indore (5-Year Integrated Programme in Management: BBA + MBA)","shortTag":"IPMAT Indore 2027","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":false,"status":"UPCOMING","priority":"FEB 2027 WINDOW","routes":["University Exam"],"routesText":"IPMAT Indore 2027 CBT (QA Short Answer + QA MCQ + Verbal) + PI","openDate":"Expected Feb 2027","deadlineText":"Expected Late Mar 2027","deadlineIso":null,"examWindow":"Exam: First Week of May 2027 \u2022 PI: June \u2013 July 2027","feeOrNotes":"Flagship 5-year Integrated BBA+MBA after Class 12. Score is also accepted by IIM Ranchi, IIFT Kakinada, NALSAR, and TAPMI Bengaluru.","officialUrl":"https://iimidr.ac.in/academic-programmes/five-year-integrated-programme-in-management-ipm/","applyUrl":"https://iimidr.ac.in/academic-programmes/five-year-integrated-programme-in-management-ipm/ipm-admissions-details/","lastVerified":"Oct 29, 2026 20:35 IST","categoryCode":"MANAGEMENT","categoryLabel":"Management (IIM IPM)"},{"id":"OTHER-IIM-IPMAT-ROHTAK-2027","name":"IPMAT Rohtak 2027 \u2014 IIM Rohtak (5-Year Integrated Programme in Management: BBA + MBA)","shortTag":"IPMAT Rohtak 2027","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":false,"status":"UPCOMING","priority":"FEB 2027 WINDOW","routes":["University Exam"],"routesText":"IPMAT Rohtak 2027 CBT (Quant, Logical Reasoning, Verbal) + PI","openDate":"Expected Feb 2027","deadlineText":"Expected Apr 2027","deadlineIso":null,"examWindow":"Exam: May 2027 \u2022 Personal Interview: June 2027","feeOrNotes":"Separate test conducted by IIM Rohtak for its 5-year Integrated BBA+MBA program after Class 12.","officialUrl":"https://www.iimrohtak.ac.in/index.php/programmes/ipm","applyUrl":"https://www.iimrohtak.ac.in/index.php/programmes/ipm/ipm-admission","lastVerified":"Oct 29, 2026 20:35 IST","categoryCode":"MANAGEMENT","categoryLabel":"Management (IIM IPM)"},{"id":"OTHER-NTA-JIPMAT-2027","name":"JIPMAT 2027 \u2014 IIM Jammu & IIM Bodh Gaya (5-Year Integrated Management \u2014 NTA)","shortTag":"JIPMAT 2027 (NTA)","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":false,"status":"UPCOMING","priority":"MAR\u2013APR 2027 WINDOW","routes":["University Exam"],"routesText":"JIPMAT 2027 Computer-Based Test (Conducted by NTA)","openDate":"Expected Mar \u2013 Apr 2027","deadlineText":"Expected May 2027","deadlineIso":null,"examWindow":"Exam: June 2027","feeOrNotes":"Joint Integrated Programme in Management Admission Test conducted by NTA for 5-year BBA+MBA at IIM Jammu and IIM Bodh Gaya.","officialUrl":"https://exams.nta.ac.in/JIPMAT/","applyUrl":"https://exams.nta.ac.in/JIPMAT/","lastVerified":"Oct 29, 2026 20:35 IST","categoryCode":"MANAGEMENT","categoryLabel":"Management (IIM IPM)"},{"id":"OTHER-ISI-ADMISSION-2027","name":"ISI Admission Test 2027 \u2014 Indian Statistical Institute (Bengaluru B.Math, Kolkata B.Stat & BSDS)","shortTag":"ISI Admission Test 2027","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":true,"status":"UPCOMING","priority":"FEB\u2013MAR 2027 WINDOW","routes":["University Exam"],"routesText":"ISI Admission Test 2027 (UGA MCQ + UGB Subjective) / INMO","openDate":"Expected Feb \u2013 Mar 2027","deadlineText":"Expected Late Mar 2027","deadlineIso":null,"examWindow":"Exam: Second Sunday of May 2027","feeOrNotes":"Zero tuition fee + monthly stipend for B.Math (Hons.) at ISI Bengaluru and B.Stat (Hons.) at ISI Kolkata; also offers 4-year BS in Statistical Data Science (BSDS).","officialUrl":"https://admission.isical.ac.in/","applyUrl":"https://admission.isical.ac.in/","lastVerified":"Oct 29, 2026 20:35 IST","categoryCode":"SPACE_RESEARCH","categoryLabel":"Math, Stat & Data Science"},{"id":"OTHER-CMI-ENTRANCE-2027","name":"CMI Entrance Exam 2027 \u2014 Chennai Mathematical Institute (B.Sc Hons. Math & CS / Physics)","shortTag":"CMI Entrance 2027","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":false,"status":"UPCOMING","priority":"MAR 2027 WINDOW","routes":["University Exam"],"routesText":"CMI Written Entrance Test 2027 / National Olympiad Direct Entry","openDate":"Expected Early Mar 2027","deadlineText":"Expected Early Apr 2027","deadlineIso":null,"examWindow":"Exam: Early May 2027","feeOrNotes":"Elite research institute for B.Sc (Hons.) in Mathematics & Computer Science and Mathematics & Physics with full tuition waivers and stipends.","officialUrl":"https://www.cmi.ac.in//admissions/","applyUrl":"https://www.cmi.ac.in//admissions/","lastVerified":"Oct 29, 2026 20:35 IST","categoryCode":"SPACE_RESEARCH","categoryLabel":"Math, CS & Physics"},{"id":"OTHER-DAE-NEST-2027","name":"NEST 2027 \u2014 NISER Bhubaneswar & UM-DAE CEBS Mumbai (Dept. of Atomic Energy 5-Yr Int. M.Sc)","shortTag":"NEST 2027 (NISER/CEBS)","tierCode":"TIER_1","tierLabel":"Tier 1","isKarnataka":false,"status":"UPCOMING","priority":"JAN\u2013FEB 2027 WINDOW","routes":["University Exam"],"routesText":"NEST 2027 CBT (Best 3 of 4 Sections: Physics, Chem, Math, Bio)","openDate":"Expected Jan \u2013 Feb 2027","deadlineText":"Expected Apr 2027","deadlineIso":null,"examWindow":"Exam: First Week of June 2027","feeOrNotes":"Funded by Department of Atomic Energy (DAE) with \u20b960,000/yr DISHA/INSPIRE scholarship + \u20b920,000 summer internship grant and direct BARC interview eligibility.","officialUrl":"https://www.nestexam.in/","applyUrl":"https://www.nestexam.in/","lastVerified":"Oct 29, 2026 20:35 IST","categoryCode":"SPACE_RESEARCH","categoryLabel":"Atomic Energy & Research"},{"id":"OTHER-COA-NATA-2027","name":"NATA 2027 \u2014 National Aptitude Test in Architecture (Council of Architecture \u2014 5-Yr B.Arch)","shortTag":"NATA 2027 (B.Arch)","tierCode":"TIER_2","tierLabel":"Tier 2","isKarnataka":true,"status":"UPCOMING","priority":"FEB\u2013MAR 2027 WINDOW","routes":["University Exam"],"routesText":"NATA 2027 (Up to 3 Attempts between April & July 2027)","openDate":"Expected Feb \u2013 Mar 2027","deadlineText":"Session-wise (Apr \u2013 July 2027)","deadlineIso":null,"examWindow":"Weekend Tests: Apr \u2013 July 2027","feeOrNotes":"Required for 5-year B.Arch admissions across Karnataka (KCET/COMEDK B.Arch at RVCE, BMSCE, MSRIT) and India.","officialUrl":"https://www.nata.in/","applyUrl":"https://www.nata.in/","lastVerified":"Oct 29, 2026 20:35 IST","categoryCode":"DESIGN_ARCH","categoryLabel":"Design & Arch"}]}</script>
+
+  <script src="app.js"></script>
+</body>
+</html>

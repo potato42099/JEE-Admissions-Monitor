@@ -1,0 +1,14 @@
+
+{
+  "hosting": {
+    "site": "jeeforms",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "**/.*",
+      "**/node_modules/**",
+      "public/**"
+    ]
+  }
+}
