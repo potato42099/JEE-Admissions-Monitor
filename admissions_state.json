@@ -1,7 +1,7 @@
 {
   "metadata": {
     "created_ist": "2026-10-29 20:36:27 IST",
-    "last_run_ist": "2026-11-08 14:13:14 IST",
+    "last_run_ist": "2026-11-09 00:25:47 IST",
     "timezone": "Asia/Kolkata"
   },
   "sources": {
@@ -2115,6 +2115,15 @@
       "deadline_date": "2026-11-22",
       "days_before": 14,
       "sent_ist": "2026-11-08 14:13:00 IST",
+      "telegram_ok": false,
+      "email_ok": false,
+      "whatsapp_ok": false
+    },
+    "OTHER-IIT-UCEED-2027|2026-11-10|1d": {
+      "event_id": "OTHER-IIT-UCEED-2027",
+      "deadline_date": "2026-11-10",
+      "days_before": 1,
+      "sent_ist": "2026-11-09 00:25:47 IST",
       "telegram_ok": false,
       "email_ok": false,
       "whatsapp_ok": false
