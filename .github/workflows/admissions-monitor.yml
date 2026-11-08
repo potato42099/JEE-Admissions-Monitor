@@ -1,0 +1,41 @@
+name: Autonomous Admissions Monitor & Auto-Deploy
+
+on:
+  schedule:
+    # Runs twice daily at 8:00 AM & 8:00 PM IST (02:30 & 14:30 UTC)
+    - cron: "30 2,14 * * *"
+  workflow_dispatch: # Allows 1-click manual runs
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  monitor-and-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Admissions Monitor
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
+          ALERT_RECIPIENT_EMAIL: ${{ secrets.ALERT_RECIPIENT_EMAIL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python3 admissions_monitor.py --run-once
+
+      - name: Commit and push updated state if dates changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add admissions_state.json source_registry_full_updated.tsv index.html || true
+          git diff --staged --quiet || (git commit -m "chore(monitor): auto-sync verified admissions state [skip ci]" && git push)
