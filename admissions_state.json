@@ -1,7 +1,7 @@
 {
   "metadata": {
     "created_ist": "2026-10-29 20:36:27 IST",
-    "last_run_ist": "2026-11-14 14:43:13 IST",
+    "last_run_ist": "2026-11-15 00:51:33 IST",
     "timezone": "Asia/Kolkata"
   },
   "sources": {
@@ -2142,6 +2142,15 @@
       "deadline_date": "2026-11-27",
       "days_before": 14,
       "sent_ist": "2026-11-13 03:01:58 IST",
+      "telegram_ok": false,
+      "email_ok": false,
+      "whatsapp_ok": false
+    },
+    "NAT-NTA-JEEMAIN-2027|2026-11-22|7d": {
+      "event_id": "NAT-NTA-JEEMAIN-2027",
+      "deadline_date": "2026-11-22",
+      "days_before": 7,
+      "sent_ist": "2026-11-15 00:51:33 IST",
       "telegram_ok": false,
       "email_ok": false,
       "whatsapp_ok": false
