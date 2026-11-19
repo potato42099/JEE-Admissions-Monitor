@@ -1,7 +1,7 @@
 {
   "metadata": {
     "created_ist": "2026-10-29 20:36:27 IST",
-    "last_run_ist": "2026-11-19 16:04:57 IST",
+    "last_run_ist": "2026-11-20 03:51:20 IST",
     "timezone": "Asia/Kolkata"
   },
   "sources": {
@@ -2160,6 +2160,15 @@
       "deadline_date": "2026-11-22",
       "days_before": 3,
       "sent_ist": "2026-11-19 03:42:18 IST",
+      "telegram_ok": false,
+      "email_ok": false,
+      "whatsapp_ok": false
+    },
+    "OTHER-ASHOKA-AAT-2027|2026-11-27|7d": {
+      "event_id": "OTHER-ASHOKA-AAT-2027",
+      "deadline_date": "2026-11-27",
+      "days_before": 7,
+      "sent_ist": "2026-11-20 03:51:20 IST",
       "telegram_ok": false,
       "email_ok": false,
       "whatsapp_ok": false
