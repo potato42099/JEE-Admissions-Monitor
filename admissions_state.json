@@ -1,9 +1,9 @@
 {
   "metadata": {
     "created_ist": "2026-10-29 20:36:27 IST",
-    "last_run_ist": "2026-11-27 19:03:19 IST",
+    "last_run_ist": "Nov 27, 2026 21:00 IST",
     "timezone": "Asia/Kolkata",
-    "last_updated_ist": "2026-11-27T18:57:00+05:30",
+    "last_updated_ist": "2026-11-27T21:00:00+05:30",
     "total_active_streams": 61,
     "last_email_sent_ist": "Nov 27, 2026 03:16 IST (JEE Main S1 Correction Window, ID: 1a219d0e5201569b)"
   },
@@ -35,9 +35,9 @@
       "display_order": 2,
       "active": true,
       "content_fingerprint": "fp_pesu_2027_open_0903",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-MAHE-MET-2027": {
       "event_id": "KA-MAHE-MET-2027",
@@ -66,9 +66,9 @@
       "display_order": 3,
       "active": true,
       "content_fingerprint": "fp_mahe_met_2027_open_0315",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-JAIN-JET-2027": {
       "event_id": "KA-JAIN-JET-2027",
@@ -97,9 +97,9 @@
       "display_order": 7,
       "active": true,
       "content_fingerprint": "fp_jain_jet_2027_open",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-CHRIST-BTECH-2027": {
       "event_id": "KA-CHRIST-BTECH-2027",
@@ -128,9 +128,9 @@
       "display_order": 6,
       "active": true,
       "content_fingerprint": "fp_christ_btech_2027_open_1015",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-REVA-BTECH-2027": {
       "event_id": "KA-REVA-BTECH-2027",
@@ -159,9 +159,9 @@
       "display_order": 8,
       "active": true,
       "content_fingerprint": "fp_reva_2027_open",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-KEA-KCET-2027": {
       "event_id": "KA-KEA-KCET-2027",
@@ -190,9 +190,9 @@
       "display_order": 29,
       "active": true,
       "content_fingerprint": "fp_kea_kcet_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-COMEDK-UGET-2027": {
       "event_id": "KA-COMEDK-UGET-2027",
@@ -221,9 +221,9 @@
       "display_order": 30,
       "active": true,
       "content_fingerprint": "fp_comedk_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-NMIT-NUCAT-2027": {
       "event_id": "KA-NMIT-NUCAT-2027",
@@ -252,9 +252,9 @@
       "display_order": 12,
       "active": true,
       "content_fingerprint": "fp_nmit_nucat_2027_dec",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-RVCE-BTECH-2027": {
       "event_id": "KA-RVCE-BTECH-2027",
@@ -283,9 +283,9 @@
       "display_order": 31,
       "active": true,
       "content_fingerprint": "fp_rvce_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-BMSCE-BTECH-2027": {
       "event_id": "KA-BMSCE-BTECH-2027",
@@ -314,9 +314,9 @@
       "display_order": 32,
       "active": true,
       "content_fingerprint": "fp_bmsce_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-MSRIT-BTECH-2027": {
       "event_id": "KA-MSRIT-BTECH-2027",
@@ -345,9 +345,9 @@
       "display_order": 33,
       "active": true,
       "content_fingerprint": "fp_msrit_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-BIT-BTECH-2027": {
       "event_id": "KA-BIT-BTECH-2027",
@@ -376,9 +376,9 @@
       "display_order": 42,
       "active": true,
       "content_fingerprint": "fp_bit_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-DSCE-BTECH-2027": {
       "event_id": "KA-DSCE-BTECH-2027",
@@ -407,9 +407,9 @@
       "display_order": 41,
       "active": true,
       "content_fingerprint": "fp_dsce_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-DSU-DSAT-2027": {
       "event_id": "KA-DSU-DSAT-2027",
@@ -438,9 +438,9 @@
       "display_order": 14,
       "active": true,
       "content_fingerprint": "fp_dsu_dsat_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-SIT-BTECH-2027": {
       "event_id": "KA-SIT-BTECH-2027",
@@ -469,9 +469,9 @@
       "display_order": 44,
       "active": true,
       "content_fingerprint": "fp_sit_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-CMRIT-BTECH-2027": {
       "event_id": "KA-CMRIT-BTECH-2027",
@@ -500,9 +500,9 @@
       "display_order": 48,
       "active": true,
       "content_fingerprint": "fp_cmrit_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-BMSIT-BTECH-2027": {
       "event_id": "KA-BMSIT-BTECH-2027",
@@ -531,9 +531,9 @@
       "display_order": 43,
       "active": true,
       "content_fingerprint": "fp_bmsit_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-RVU-BTECH-2027": {
       "event_id": "KA-RVU-BTECH-2027",
@@ -562,9 +562,9 @@
       "display_order": 13,
       "active": true,
       "content_fingerprint": "fp_rvu_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-PRESIDENCY-BTECH-2027": {
       "event_id": "KA-PRESIDENCY-BTECH-2027",
@@ -593,9 +593,9 @@
       "display_order": 15,
       "active": true,
       "content_fingerprint": "fp_presidency_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-KLETECH-BTECH-2027": {
       "event_id": "KA-KLETECH-BTECH-2027",
@@ -624,9 +624,9 @@
       "display_order": 45,
       "active": true,
       "content_fingerprint": "fp_kletech_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-SJCE-JSSSTU-2027": {
       "event_id": "KA-SJCE-JSSSTU-2027",
@@ -655,9 +655,9 @@
       "display_order": 38,
       "active": true,
       "content_fingerprint": "fp_jssstu_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-NIE-MYSURU-2027": {
       "event_id": "KA-NIE-MYSURU-2027",
@@ -686,9 +686,9 @@
       "display_order": 39,
       "active": true,
       "content_fingerprint": "fp_nie_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-IIITB-BTECH-2027": {
       "event_id": "KA-IIITB-BTECH-2027",
@@ -717,9 +717,9 @@
       "display_order": 23,
       "active": true,
       "content_fingerprint": "fp_iiitb_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "NAT-NTA-JEEMAIN-2027": {
       "event_id": "NAT-NTA-JEEMAIN-2027",
@@ -748,9 +748,9 @@
       "display_order": 1,
       "active": true,
       "content_fingerprint": "fp_jeemain_2027_open_1024",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "NAT-IIT-JEEADV-2027": {
       "event_id": "NAT-IIT-JEEADV-2027",
@@ -779,9 +779,9 @@
       "display_order": 18,
       "active": true,
       "content_fingerprint": "fp_jeeadv_2027_may23_official",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "NAT-BITS-BITSAT-2027": {
       "event_id": "NAT-BITS-BITSAT-2027",
@@ -810,9 +810,9 @@
       "display_order": 20,
       "active": true,
       "content_fingerprint": "fp_bitsat_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "NAT-VIT-VITEEE-2027": {
       "event_id": "NAT-VIT-VITEEE-2027",
@@ -841,9 +841,9 @@
       "display_order": 4,
       "active": true,
       "content_fingerprint": "fp_viteee_2027_open_0331",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "NAT-SRM-SRMJEEE-2027": {
       "event_id": "NAT-SRM-SRMJEEE-2027",
@@ -872,9 +872,9 @@
       "display_order": 11,
       "active": true,
       "content_fingerprint": "fp_srm_srmjeee_2027_open_1030_cbt2",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "NAT-AMRITA-AEEE-2027": {
       "event_id": "NAT-AMRITA-AEEE-2027",
@@ -903,9 +903,9 @@
       "display_order": 10,
       "active": true,
       "content_fingerprint": "fp_aeee_2027_nov",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "NAT-IIITH-UGEE-2027": {
       "event_id": "NAT-IIITH-UGEE-2027",
@@ -934,9 +934,9 @@
       "display_order": 21,
       "active": true,
       "content_fingerprint": "fp_iiith_ugee_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "NAT-IISER-IAT-2027": {
       "event_id": "NAT-IISER-IAT-2027",
@@ -965,9 +965,9 @@
       "display_order": 26,
       "active": true,
       "content_fingerprint": "fp_iiser_iat_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "NAT-IISC-BTECH-2027": {
       "event_id": "NAT-IISC-BTECH-2027",
@@ -996,9 +996,9 @@
       "display_order": 19,
       "active": true,
       "content_fingerprint": "fp_iisc_btech_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "COUNS-JOSAA-CSAB-2027": {
       "event_id": "COUNS-JOSAA-CSAB-2027",
@@ -1027,9 +1027,9 @@
       "display_order": 24,
       "active": false,
       "content_fingerprint": "fp_josaa_csab_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "PVT-UPES-UPESEAT-2027": {
       "event_id": "PVT-UPES-UPESEAT-2027",
@@ -1058,9 +1058,9 @@
       "display_order": 9,
       "active": true,
       "content_fingerprint": "fp_upes_2027_open_0915",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "PVT-SNU-SNUSAT-2027": {
       "event_id": "PVT-SNU-SNUSAT-2027",
@@ -1089,9 +1089,9 @@
       "display_order": 5,
       "active": true,
       "content_fingerprint": "fp_snu_2027_open",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "PVT-THAPAR-BTECH-2027": {
       "event_id": "PVT-THAPAR-BTECH-2027",
@@ -1120,9 +1120,9 @@
       "display_order": 35,
       "active": true,
       "content_fingerprint": "fp_thapar_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "PVT-LNMIIT-BTECH-2027": {
       "event_id": "PVT-LNMIIT-BTECH-2027",
@@ -1151,9 +1151,9 @@
       "display_order": 36,
       "active": true,
       "content_fingerprint": "fp_lnmiit_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "PVT-MAHINDRA-BTECH-2027": {
       "event_id": "PVT-MAHINDRA-BTECH-2027",
@@ -1182,9 +1182,9 @@
       "display_order": 16,
       "active": true,
       "content_fingerprint": "fp_mahindra_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "NAT-CUSAT-CAT-2027": {
       "event_id": "NAT-CUSAT-CAT-2027",
@@ -1213,9 +1213,9 @@
       "display_order": 34,
       "active": true,
       "content_fingerprint": "fp_cusat_2027_wait",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-RUAS-BLR-2027": {
       "event_id": "KA-RUAS-BLR-2027",
@@ -1244,9 +1244,9 @@
       "display_order": 17,
       "active": true,
       "content_fingerprint": "fp_ka_ruas_blr_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-NITK-SURATHKAL-2027": {
       "event_id": "KA-NITK-SURATHKAL-2027",
@@ -1275,9 +1275,9 @@
       "display_order": 22,
       "active": true,
       "content_fingerprint": "fp_ka_nitk_surathkal_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "NAT-JAC-DELHI-2027": {
       "event_id": "NAT-JAC-DELHI-2027",
@@ -1306,9 +1306,9 @@
       "display_order": 25,
       "active": false,
       "content_fingerprint": "fp_nat_jac_delhi_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "NAT-WBJEE-2027": {
       "event_id": "NAT-WBJEE-2027",
@@ -1337,9 +1337,9 @@
       "display_order": 27,
       "active": true,
       "content_fingerprint": "fp_nat_wbjee_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "NAT-MHTCET-2027": {
       "event_id": "NAT-MHTCET-2027",
@@ -1368,9 +1368,9 @@
       "display_order": 28,
       "active": true,
       "content_fingerprint": "fp_mhtcet_2027_dates_syllabus_pattern_1118",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-IIIT-DHARWAD-2027": {
       "event_id": "KA-IIIT-DHARWAD-2027",
@@ -1399,9 +1399,9 @@
       "display_order": 37,
       "active": true,
       "content_fingerprint": "fp_ka_iiit_dharwad_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-UVCE-BLR-2027": {
       "event_id": "KA-UVCE-BLR-2027",
@@ -1430,9 +1430,9 @@
       "display_order": 40,
       "active": true,
       "content_fingerprint": "fp_ka_uvce_blr_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-BNMIT-BLR-2027": {
       "event_id": "KA-BNMIT-BLR-2027",
@@ -1461,9 +1461,9 @@
       "display_order": 46,
       "active": false,
       "content_fingerprint": "fp_ka_bnmit_blr_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-RNSIT-BLR-2027": {
       "event_id": "KA-RNSIT-BLR-2027",
@@ -1492,9 +1492,9 @@
       "display_order": 47,
       "active": true,
       "content_fingerprint": "fp_ka_rnsit_blr_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "KA-NHCE-BLR-2027": {
       "event_id": "KA-NHCE-BLR-2027",
@@ -1523,9 +1523,9 @@
       "display_order": 49,
       "active": true,
       "content_fingerprint": "fp_ka_nhce_blr_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "OTHER-IIT-UCEED-2027": {
       "event_id": "OTHER-IIT-UCEED-2027",
@@ -1554,9 +1554,9 @@
       "display_order": 50,
       "active": true,
       "content_fingerprint": "fp_uceed_2027_closed_nov10_bitsdes",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "OTHER-ASHOKA-AAT-2027": {
       "event_id": "OTHER-ASHOKA-AAT-2027",
@@ -1585,9 +1585,9 @@
       "display_order": 51,
       "active": true,
       "content_fingerprint": "fp_ashoka_aat_2027_r1_nov23_verified",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "OTHER-UPSC-NDA1-2027": {
       "event_id": "OTHER-UPSC-NDA1-2027",
@@ -1616,9 +1616,9 @@
       "display_order": 52,
       "active": true,
       "content_fingerprint": "fp_other_upsc_nda1_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "OTHER-ISRO-IIST-2027": {
       "event_id": "OTHER-ISRO-IIST-2027",
@@ -1647,9 +1647,9 @@
       "display_order": 53,
       "active": true,
       "content_fingerprint": "fp_other_isro_iist_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "OTHER-NTA-CUETUG-2027": {
       "event_id": "OTHER-NTA-CUETUG-2027",
@@ -1678,9 +1678,9 @@
       "display_order": 54,
       "active": true,
       "content_fingerprint": "fp_other_nta_cuetug_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "OTHER-IIM-IPMAT-INDORE-2027": {
       "event_id": "OTHER-IIM-IPMAT-INDORE-2027",
@@ -1709,9 +1709,9 @@
       "display_order": 55,
       "active": true,
       "content_fingerprint": "fp_other_iim_ipmat_indore_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "OTHER-IIM-IPMAT-ROHTAK-2027": {
       "event_id": "OTHER-IIM-IPMAT-ROHTAK-2027",
@@ -1740,9 +1740,9 @@
       "display_order": 56,
       "active": true,
       "content_fingerprint": "fp_other_iim_ipmat_rohtak_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "OTHER-NTA-JIPMAT-2027": {
       "event_id": "OTHER-NTA-JIPMAT-2027",
@@ -1771,9 +1771,9 @@
       "display_order": 57,
       "active": true,
       "content_fingerprint": "fp_other_nta_jipmat_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "OTHER-ISI-ADMISSION-2027": {
       "event_id": "OTHER-ISI-ADMISSION-2027",
@@ -1802,9 +1802,9 @@
       "display_order": 58,
       "active": true,
       "content_fingerprint": "fp_other_isi_admission_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "OTHER-CMI-ENTRANCE-2027": {
       "event_id": "OTHER-CMI-ENTRANCE-2027",
@@ -1833,9 +1833,9 @@
       "display_order": 59,
       "active": true,
       "content_fingerprint": "fp_other_cmi_entrance_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "OTHER-DAE-NEST-2027": {
       "event_id": "OTHER-DAE-NEST-2027",
@@ -1864,9 +1864,9 @@
       "display_order": 60,
       "active": true,
       "content_fingerprint": "fp_other_dae_nest_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     },
     "OTHER-COA-NATA-2027": {
       "event_id": "OTHER-COA-NATA-2027",
@@ -1895,9 +1895,9 @@
       "display_order": 61,
       "active": true,
       "content_fingerprint": "fp_other_coa_nata_2027",
-      "last_checked_ist": "Nov 27, 2026 18:57 IST",
-      "last_checked": "2026-11-27T18:57:00+05:30",
-      "last_successful_check_ist": "Nov 27, 2026 18:57 IST"
+      "last_checked_ist": "Nov 27, 2026 21:00 IST",
+      "last_checked": "2026-11-27T21:00:00+05:30",
+      "last_successful_check_ist": "Nov 27, 2026 21:00 IST"
     }
   },
   "reminder_log": {
@@ -2352,11 +2352,20 @@
       "timestamp_ist": "Nov 27, 2026 15:18 IST",
       "email_status": "Clean Check (Morning Alert ID: 1a219d0e5201569b)",
       "recipient": "N/A"
+    },
+    {
+      "event_id": "SCHEDULED-RUN-20261127-EVENING",
+      "category": "System Log",
+      "institution": "Twice-Daily Scheduled Monitor Check (Evening)",
+      "summary": "Verified all 58 active streams; zero new openings or deadline extensions since afternoon check. JEE Main 2027 S1 Correction Window remains active on jeemain.nta.nic.in through Nov 29 (11:50 PM IST). Apps Script [ADMISSIONS-SYNC] bridge verified active (updated Sheet & GitHub at 18:57 IST).",
+      "timestamp_ist": "Nov 27, 2026 21:00 IST",
+      "email_status": "Clean Check + [ADMISSIONS-SYNC] Dispatched",
+      "recipient": "N/A"
     }
   ],
   "pending_delivery_queue": [],
-  "last_updated_ist": "2026-11-27T18:57:00+05:30",
-  "last_checked_human": "Nov 27, 2026 18:57 IST",
+  "last_updated_ist": "2026-11-27T21:00:00+05:30",
+  "last_checked_human": "Nov 27, 2026 21:00 IST",
   "audit_log": [
     {
       "Run_ID": "SCHEDULED-RUN-20261117-AFTERNOON",
